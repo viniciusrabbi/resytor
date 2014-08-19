@@ -11,3 +11,15 @@ Trabalho de matéria de Sistemas Distribuídos do IFES Campus Colatina.
 * Receberas as mensagens
 * Interpretar as mensagens do cliente
 * Montar modelo vetorial
+
+## Tarefas
+
+| Tarefas                     |
+|-----------------------------|
+| Interface gráfica           |
+| Conexão Cliente/Servidor    |
+| Interpretador               |
+| Armazenamento das mensagens |
+| Montar modelo vetorial      |
+| Cálculo de ponderação       |
+| Cálculo de similaridade     |
