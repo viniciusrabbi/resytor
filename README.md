@@ -1,4 +1,4 @@
-Resytor - Sistema de Recuperação Vetorial
+﻿Resytor - Sistema de Recuperação Vetorial
 =========================================
 Trabalho de matéria de Sistemas Distribuídos do IFES Campus Colatina.
 
@@ -16,10 +16,19 @@ Trabalho de matéria de Sistemas Distribuídos do IFES Campus Colatina.
 
 | Tarefas                     |
 |-----------------------------|
-| Interface gráfica           |
-| Conexão Cliente/Servidor    |
 | Interpretador               |
 | Armazenamento das mensagens |
 | Montar modelo vetorial      |
 | Cálculo de ponderação       |
 | Cálculo de similaridade     |
+
+| Interface gráfica                                  |
+|----------------------------------------------------|
+| Opção para enviar mensagens                        |
+| Campo para envio de mensagens (strings)            |
+| Opção para recuperar as 10 últimas mensagens       |
+| Opção de pesquisa de documentos por palavras-chave |
+
+| Conexão Cliente/Servidor                                 |
+|----------------------------------------------------------|
+| Classes que fazem a conexão entre o cliente e o servidor |
