@@ -1,5 +1,9 @@
 package view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
+
 /**
  *
  * @author LuizVenturote https://github.com/luizventurote
@@ -12,6 +16,7 @@ public class SearchWin extends javax.swing.JDialog {
     public SearchWin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setIcon();
     }
 
     /**
@@ -114,6 +119,12 @@ public class SearchWin extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    public void setIcon() {
+        URL url = this.getClass().getResource("/img/icon.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
