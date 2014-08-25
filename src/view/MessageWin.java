@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view;
 
 /**
  *
- * @author Luiz
+ * @author LuizVenturote https://github.com/luizventurote
  */
 public class MessageWin extends javax.swing.JDialog {
 
@@ -35,6 +29,7 @@ public class MessageWin extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mensagens - Resytor");
         setPreferredSize(new java.awt.Dimension(500, 250));
+        setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

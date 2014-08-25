@@ -1,19 +1,15 @@
 package view;
 
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.net.URL;
-
 /**
  *
  * @author LuizVenturote https://github.com/luizventurote
  */
-public class SendMessageWin extends javax.swing.JDialog {
+public class SearchWin extends javax.swing.JDialog {
 
     /**
-     * Creates new form SendMessageWin
+     * Creates new form SearchWin
      */
-    public SendMessageWin(java.awt.Frame parent, boolean modal) {
+    public SearchWin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -27,25 +23,24 @@ public class SendMessageWin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        btn_enviar_mensagem = new javax.swing.JToggleButton();
+        jTextField1 = new javax.swing.JTextField();
+        btn_buscar_mensagens = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Enviar Mensagem - Resytor");
+        setTitle("Buscar mensagens - Resytor");
         setResizable(false);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        btn_enviar_mensagem.setText("Enviar mensagem");
-        btn_enviar_mensagem.setBorderPainted(false);
-        btn_enviar_mensagem.setFocusPainted(false);
-        btn_enviar_mensagem.setRequestFocusEnabled(false);
-        btn_enviar_mensagem.setRolloverEnabled(false);
-        btn_enviar_mensagem.setVerifyInputWhenFocusTarget(false);
+        btn_buscar_mensagens.setText("Buscar mensagens");
+        btn_buscar_mensagens.setBorderPainted(false);
+        btn_buscar_mensagens.setFocusPainted(false);
+        btn_buscar_mensagens.setRequestFocusEnabled(false);
+        btn_buscar_mensagens.setRolloverEnabled(false);
+        btn_buscar_mensagens.setVerifyInputWhenFocusTarget(false);
+        btn_buscar_mensagens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscar_mensagensActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,24 +49,30 @@ public class SendMessageWin extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_enviar_mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextField1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 238, Short.MAX_VALUE)
+                        .addComponent(btn_buscar_mensagens, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_enviar_mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_buscar_mensagens, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_buscar_mensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_mensagensActionPerformed
+        MessageWin win = new MessageWin(null, true);
+        win.setLocationRelativeTo(null);
+        win.setVisible(true);
+    }//GEN-LAST:event_btn_buscar_mensagensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,20 +91,20 @@ public class SendMessageWin extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SendMessageWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SearchWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SendMessageWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SearchWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SendMessageWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SearchWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SendMessageWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SearchWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SendMessageWin dialog = new SendMessageWin(new javax.swing.JFrame(), true);
+                SearchWin dialog = new SearchWin(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -116,8 +117,7 @@ public class SendMessageWin extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btn_enviar_mensagem;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JToggleButton btn_buscar_mensagens;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,7 +32,7 @@ public class MainWin extends javax.swing.JFrame {
         btn_enviar_mensagem = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         btn_ultimas_mensagens = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        btn_pesquisar = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -63,9 +63,14 @@ public class MainWin extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton3.setText("Pesquisar");
-        jToggleButton3.setBorderPainted(false);
-        jToggleButton3.setFocusPainted(false);
+        btn_pesquisar.setText("Pesquisar");
+        btn_pesquisar.setBorderPainted(false);
+        btn_pesquisar.setFocusPainted(false);
+        btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesquisarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("DevIFES - M19");
 
@@ -88,7 +93,7 @@ public class MainWin extends javax.swing.JFrame {
                         .addComponent(btn_ultimas_mensagens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3)
@@ -106,7 +111,7 @@ public class MainWin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_ultimas_mensagens, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -130,6 +135,12 @@ public class MainWin extends javax.swing.JFrame {
         win.setLocationRelativeTo(null);
         win.setVisible(true);
     }//GEN-LAST:event_btn_ultimas_mensagensActionPerformed
+
+    private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
+        SearchWin win = new SearchWin(this, true);
+        win.setLocationRelativeTo(null);
+        win.setVisible(true);
+    }//GEN-LAST:event_btn_pesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,10 +182,10 @@ public class MainWin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn_enviar_mensagem;
+    private javax.swing.JToggleButton btn_pesquisar;
     private javax.swing.JToggleButton btn_ultimas_mensagens;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 }
