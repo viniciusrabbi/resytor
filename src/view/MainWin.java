@@ -1,24 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Main.java
- *
- * Created on 25/08/2014, 08:32:26
- */
 package view;
+
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 
 /**
  *
- * @author 2012122760110
+ * @author LuizVenturote https://github.com/luizventurote
  */
 public class MainWin extends javax.swing.JFrame {
 
     /** Creates new form Main */
     public MainWin() {
         initComponents();
+        
+        this.setIcon();
+       
     }
 
     /** This method is called from within the constructor to
@@ -139,6 +136,13 @@ public class MainWin extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setIcon() {
+        URL url = this.getClass().getResource("/img/icon.png");  
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);  
+        this.setIconImage(imagemTitulo); 
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
