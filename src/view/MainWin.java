@@ -126,7 +126,9 @@ public class MainWin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new MainWin().setVisible(true);
+                MainWin wm = new MainWin();
+                wm.setLocationRelativeTo(null);
+                wm.setVisible(true);
             }
         });
     }
