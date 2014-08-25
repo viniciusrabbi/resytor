@@ -37,7 +37,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jToggleButton2" max="32767" attributes="0"/>
+                      <Component id="btn_ultimas_mensagens" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -62,7 +62,7 @@
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="btn_enviar_mensagem" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jToggleButton2" min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="btn_ultimas_mensagens" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jToggleButton3" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -96,12 +96,15 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+    <Component class="javax.swing.JToggleButton" name="btn_ultimas_mensagens">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xda;ltimas mensagens"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ultimas_mensagensActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="jToggleButton3">
       <Properties>

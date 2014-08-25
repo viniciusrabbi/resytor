@@ -31,7 +31,7 @@ public class MainWin extends javax.swing.JFrame {
 
         btn_enviar_mensagem = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        btn_ultimas_mensagens = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,9 +54,14 @@ public class MainWin extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
-        jToggleButton2.setText("Últimas mensagens");
-        jToggleButton2.setBorderPainted(false);
-        jToggleButton2.setFocusPainted(false);
+        btn_ultimas_mensagens.setText("Últimas mensagens");
+        btn_ultimas_mensagens.setBorderPainted(false);
+        btn_ultimas_mensagens.setFocusPainted(false);
+        btn_ultimas_mensagens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ultimas_mensagensActionPerformed(evt);
+            }
+        });
 
         jToggleButton3.setText("Pesquisar");
         jToggleButton3.setBorderPainted(false);
@@ -80,7 +85,7 @@ public class MainWin extends javax.swing.JFrame {
                         .addComponent(btn_enviar_mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn_ultimas_mensagens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -99,7 +104,7 @@ public class MainWin extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(btn_enviar_mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_ultimas_mensagens, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -119,6 +124,12 @@ public class MainWin extends javax.swing.JFrame {
         win.setVisible(true);
 
     }//GEN-LAST:event_btn_enviar_mensagemActionPerformed
+
+    private void btn_ultimas_mensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ultimas_mensagensActionPerformed
+        MessageWin win = new MessageWin(this, true);
+        win.setLocationRelativeTo(null);
+        win.setVisible(true);
+    }//GEN-LAST:event_btn_ultimas_mensagensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,10 +171,10 @@ public class MainWin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn_enviar_mensagem;
+    private javax.swing.JToggleButton btn_ultimas_mensagens;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 }
