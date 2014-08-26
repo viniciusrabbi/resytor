@@ -16,6 +16,11 @@ import java.sql.Statement;
  * @author Matheus Claudino
  */
 public class Armazena {
+        
+    public static Connection Conectar() throws SQLException {
+        MySQLNativeDriver driver = new MySQLNativeDriver("BD_resytor", "root", "");
+        return driver.obterConexao();
+    }
 
     /**
      *
@@ -25,9 +30,8 @@ public class Armazena {
      * @throws java.sql.SQLException
      */
     public void insert(String text) throws SQLException {
-        Connection conexao;
-        MySQLNativeDriver driver = new MySQLNativeDriver("BD_resytor", "root", "");
-        conexao = driver.obterConexao();
+        
+        Connection conexao = Armazena.Conectar();
 
         String sql = "INSERT INTO mensagem(conteudo)VALUES(?);";
 
