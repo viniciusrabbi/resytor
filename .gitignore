@@ -33,3 +33,5 @@ $RECYCLE.BIN/
 *.msp
 /server_app/nbproject/private/
 /app_server/nbproject/private/
+/app_client/nbproject/private/
+/Resytor_Server/nbproject/private/
