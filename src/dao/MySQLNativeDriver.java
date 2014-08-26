@@ -1,5 +1,9 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  * Classe responsável por efetuar a conexão com o banco
  *
@@ -40,14 +44,10 @@ public class MySQLNativeDriver {
         } catch (ClassNotFoundException erro) {
             System.out.println("Driver MySQL não encontrado");
         } catch (SQLException erro) {
-            System.out.println(
-            "Problemas na conexão com 
-banco de dados: "
-                    + erro.getMessage()
-          
-            );
+            System.out.println("Problemas na conexão com banco de dados: " + erro.getMessage());
         } finally {
             return conexao;
         }
 
     }
+}
