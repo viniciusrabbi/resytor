@@ -6,7 +6,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Classe responsável pela persistência no banco, utilizando jdbc
@@ -65,4 +67,32 @@ public class Armazena {
         }
     }
 
+    /**
+     *
+     * Método para a pesquisa das ultimas mensagem no banco
+     *
+     * @param id identificador da mensagem
+     * @throws java.sql.SQLException
+     */
+    public void search(int id) throws SQLException {
+        Connection conexao;
+        MySQLNativeDriver driver = new MySQLNativeDriver("BD_resytor", "root", "");
+        conexao = driver.obterConexao();
+        ResultSet rs;
+        Statement stmt = conexao.createStatement();
+
+        String sql = "SELECT conteudo FROM mensagem WHERE mensagem.id = " + String.valueOf(id);
+        try {
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                try {
+                    System.out.println(rs.getString("conteudo"));
+                } catch (SQLException erro) {
+                    System.out.println("Erro na leitura de dados (" + erro.getLocalizedMessage() + ")");
+                }
+            }
+        } catch (SQLException erro) {
+            System.out.println("Comando SQL inválido (" + erro.getLocalizedMessage() + ")");
+        }
+    }
 }
