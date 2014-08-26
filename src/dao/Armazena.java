@@ -69,7 +69,7 @@ public class Armazena {
 
     /**
      *
-     * Método para a pesquisa das ultimas mensagem no banco
+     * Método para a pesquisa das mensagem no banco por identificador
      *
      * @param id identificador da mensagem
      * @throws java.sql.SQLException
@@ -82,6 +82,34 @@ public class Armazena {
         Statement stmt = conexao.createStatement();
 
         String sql = "SELECT conteudo FROM mensagem WHERE mensagem.id = " + String.valueOf(id);
+        try {
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                try {
+                    System.out.println(rs.getString("conteudo"));
+                } catch (SQLException erro) {
+                    System.out.println("Erro na leitura de dados (" + erro.getLocalizedMessage() + ")");
+                }
+            }
+        } catch (SQLException erro) {
+            System.out.println("Comando SQL inválido (" + erro.getLocalizedMessage() + ")");
+        }
+    }
+
+    /**
+     *
+     * Método para a pesquisa das ultimas dez mensagem no banco
+     *
+     * @throws java.sql.SQLException
+     */
+    public void searchLastMessage() throws SQLException {
+        Connection conexao;
+        MySQLNativeDriver driver = new MySQLNativeDriver("BD_resytor", "root", "");
+        conexao = driver.obterConexao();
+        ResultSet rs;
+        Statement stmt = conexao.createStatement();
+
+        String sql = "SELECT conteudo FROM mensagem LIMIT 10";
         try {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
