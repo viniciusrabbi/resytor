@@ -40,4 +40,29 @@ public class Armazena {
         }
     }
 
+    /**
+     *
+     * Método para a exclusão da mensagem no banco
+     *
+     * @param id identificador da mensagem
+     * @throws java.sql.SQLException
+     */
+    public void delete(int id) throws SQLException {
+        Connection conexao;
+        MySQLNativeDriver driver = new MySQLNativeDriver("BD_resytor", "root", "");
+        conexao = driver.obterConexao();
+
+        String sql = "DELETE FROM mensagem WHERE mensagem.id = ?";
+
+        PreparedStatement stmt;
+
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, String.valueOf(id));
+            stmt.executeUpdate();
+        } catch (SQLException erro) {
+            System.out.println("Erro na exclusão (" + erro.getLocalizedMessage() + ")");
+        }
+    }
+
 }
