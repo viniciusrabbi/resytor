@@ -123,4 +123,36 @@ public class Armazena {
             System.out.println("Comando SQL inválido (" + erro.getLocalizedMessage() + ")");
         }
     }
+
+    /**
+     *
+     * Método para a pesquisa das mensagens que contém a palavra passada por
+     * parâmetro
+     *
+     * @param str palavra pesquisada
+     * @throws java.sql.SQLException
+     */
+    public void searchForName(String str) throws SQLException {
+        Connection conexao;
+        MySQLNativeDriver driver = new MySQLNativeDriver("BD_resytor", "root", "");
+        conexao = driver.obterConexao();
+        ResultSet rs;
+        Statement stmt = conexao.createStatement();
+
+        String sql = "SELECT conteudo FROM mensagem WHERE mensagem.conteudo LIKE" + " '%" + str + "%'";
+
+        System.out.println(sql);
+        try {
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                try {
+                    System.out.println(rs.getString("conteudo"));
+                } catch (SQLException erro) {
+                    System.out.println("Erro na leitura de dados (" + erro.getLocalizedMessage() + ")");
+                }
+            }
+        } catch (SQLException erro) {
+            System.out.println("Comando SQL inválido (" + erro.getLocalizedMessage() + ")");
+        }
+    }
 }
