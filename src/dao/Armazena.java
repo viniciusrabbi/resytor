@@ -155,4 +155,30 @@ public class Armazena {
             System.out.println("Comando SQL inválido (" + erro.getLocalizedMessage() + ")");
         }
     }
+
+    /**
+     *
+     * Método para a atualização da mensagem no banco
+     *
+     * @param text mensagem recebida
+     * @param id identificador da mensagem
+     * @throws java.sql.SQLException
+     */
+    public void update(String text, int id) throws SQLException {
+        Connection conexao;
+        MySQLNativeDriver driver = new MySQLNativeDriver("BD_resytor", "root", "");
+        conexao = driver.obterConexao();
+
+        String sql = "UPDATE mensagem SET conteudo = ? WHERE mensagem.id = " + String.valueOf(id);
+
+        PreparedStatement stmt;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, text);
+            //stmt.setString(id, sql);
+            stmt.executeUpdate();
+        } catch (SQLException erro) {
+            System.out.println("Erro na atualização (" + erro.getLocalizedMessage() + ")");
+        }
+    }
 }
