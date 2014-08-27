@@ -1,4 +1,11 @@
 ### NetBeans ###
+*/**/manifest.mf
+*/**/build.xml
+*/**/nbproject
+nbproject/**/*
+server_app/nbproject
+server_app/build.xml
+server_app/manifest.mf
 nbproject/private/
 build/
 nbbuild/
@@ -24,3 +31,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+/server_app/nbproject/private/
+/app_server/nbproject/private/
+/app_client/nbproject/private/
+/Resytor_Server/nbproject/private/
