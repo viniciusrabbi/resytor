@@ -1,6 +1,6 @@
 ﻿Resytor - Sistema de Recuperação Vetorial
 =========================================
-![image](https://raw.githubusercontent.com/luizventurote/resytor/master/img/Logo.png)
+![image](https://raw.githubusercontent.com/luizventurote/resytor/master/doc/logo/Logo.png)
 
 Trabalho de matéria de Sistemas Distribuídos do IFES Campus Colatina.
 
