@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS BD_resytor;
+USE BD_resytor;
+
+CREATE TABLE mensagem(
+	id INT NOT NULL AUTO_INCREMENT,
+	conteudo TEXT NOT NULL,
+	PRIMARY KEY(id)
+);
+
