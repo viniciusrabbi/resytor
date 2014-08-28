@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
@@ -25,7 +21,7 @@ import java.sql.Statement;
  *
  * @author Matheus Claudino
  */
-public class Armazena {
+public class Dao {
 
     /**
      *
@@ -47,7 +43,7 @@ public class Armazena {
      * @throws java.sql.SQLException
      */
     public void insert(String text) throws SQLException {
-        Connection conexao = Armazena.Conectar();
+        Connection conexao = Dao.Conectar();
 
         String sql = "INSERT INTO mensagem(conteudo)VALUES(?);";
         PreparedStatement stmt;
@@ -69,7 +65,7 @@ public class Armazena {
      * @throws java.sql.SQLException
      */
     public void delete(int id) throws SQLException {
-        Connection conexao = Armazena.Conectar();
+        Connection conexao = Dao.Conectar();
 
         String sql = "DELETE FROM mensagem WHERE mensagem.id = ?";
         PreparedStatement stmt;
@@ -91,7 +87,7 @@ public class Armazena {
      * @throws java.sql.SQLException
      */
     public void search(int id) throws SQLException {
-        Connection conexao = Armazena.Conectar();
+        Connection conexao = Dao.Conectar();
         ResultSet rs;
         Statement stmt = conexao.createStatement();
 
@@ -117,7 +113,7 @@ public class Armazena {
      * @throws java.sql.SQLException
      */
     public void searchLastMessage() throws SQLException {
-        Connection conexao = Armazena.Conectar();
+        Connection conexao = Dao.Conectar();
         ResultSet rs;
         Statement stmt = conexao.createStatement();
 
@@ -145,7 +141,7 @@ public class Armazena {
      * @throws java.sql.SQLException
      */
     public void searchForName(String str) throws SQLException {
-        Connection conexao = Armazena.Conectar();
+        Connection conexao = Dao.Conectar();
         ResultSet rs;
         Statement stmt = conexao.createStatement();
 
@@ -174,7 +170,7 @@ public class Armazena {
      * @throws java.sql.SQLException
      */
     public void update(String text, int id) throws SQLException {
-        Connection conexao = Armazena.Conectar();
+        Connection conexao = Dao.Conectar();
 
         String sql = "UPDATE mensagem SET conteudo = ? WHERE mensagem.id = " + String.valueOf(id);
         PreparedStatement stmt;
