@@ -1,5 +1,6 @@
 package view;
 
+import control.Core;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
@@ -9,6 +10,8 @@ import java.net.URL;
  * @author LuizVenturote https://github.com/luizventurote
  */
 public class MainWin extends javax.swing.JFrame {
+    
+    Core core;
 
     /**
      * Creates new form MainWin
@@ -16,6 +19,9 @@ public class MainWin extends javax.swing.JFrame {
     public MainWin() {
         initComponents();
         this.setIcon();
+        
+        // Iniciar o Core do sistema
+        this.core = new Core();
     }
 
     /**
