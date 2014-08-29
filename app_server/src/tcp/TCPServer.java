@@ -24,7 +24,9 @@ public class TCPServer {
                 Socket clientSocket = listenSocket.accept();
                 in = new DataInputStream(clientSocket.getInputStream());
                 out = new DataOutputStream(clientSocket.getOutputStream());
+                
                 String data = in.readUTF(); // Recebe a mensagem
+                System.out.println("Mensagem recebida: " + data);
                 
                 //O método .toUpperCase() converte todas as letras da String para maiúcula. No caso do Projeto Resytor,
                 // devemos substituir "data.toUpperCase()" pelo método interpretador.

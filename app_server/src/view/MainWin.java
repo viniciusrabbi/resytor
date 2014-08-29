@@ -4,6 +4,7 @@ import control.Core;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import tcp.TCPServer;
 
 /**
  *
@@ -98,7 +99,7 @@ public class MainWin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_initServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_initServerActionPerformed
-
+        TCPServer.startServer();
       
     }//GEN-LAST:event_btn_initServerActionPerformed
 
