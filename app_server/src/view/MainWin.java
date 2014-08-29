@@ -1,18 +1,28 @@
 package view;
 
 import control.Core;
+import java.awt.AWTException;
 import java.awt.Image;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
+import java.awt.SystemTray;
 import java.awt.Toolkit;
+import java.awt.TrayIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
-import tcp.TCPServer;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author LuizVenturote https://github.com/luizventurote
  */
 public class MainWin extends javax.swing.JFrame {
-    
-    Core core;
+
+    private Core core;
+    private TrayIcon trayIcon = null;
+    private SystemTray tray = null;
 
     /**
      * Creates new form MainWin
@@ -20,9 +30,65 @@ public class MainWin extends javax.swing.JFrame {
     public MainWin() {
         initComponents();
         this.setIcon();
-        
+
+        //Setando versão
+        this.version.setText("v0.0.1");
+
+        //Adicionando Opção de SystemTray
+        this.adicionarSystemTray();
+
         // Iniciar o Core do sistema
         this.core = new Core();
+    }
+
+    private void adicionarSystemTray() {
+        if (SystemTray.isSupported()) {
+            tray = SystemTray.getSystemTray();
+
+            //Adicionando Icone
+            URL url = this.getClass().getResource("/img/icon.png");
+            Image image = Toolkit.getDefaultToolkit().getImage(url);
+
+            //Criando menu PopUp do Tray
+            PopupMenu popup = new PopupMenu();
+
+            //Criando menu Abrir
+            MenuItem defaultItem = new MenuItem("Abrir");
+            defaultItem.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    tray.remove(trayIcon);
+                    setVisible(true);
+                }
+            });
+            //Inserindo o menu Abrir no PopUpMenu 'popup'
+            popup.add(defaultItem);
+
+            //#######################################
+            //Criando menu Sair
+            defaultItem = new MenuItem("Sair");
+            //Adicionando Listener para sair quando clicar no Botao criado acima
+            defaultItem.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);
+                }
+            });
+            //Inserindo o menu Sair no PopUpMenu 'popup'
+            popup.add(defaultItem);
+
+            //Adicionando nome ao icone no Tray
+            trayIcon = new TrayIcon(image, "Resytor " + version.getText(), popup);
+            trayIcon.setImageAutoSize(true);
+
+            //Adicionando opção de abrir ao dar duplo clique no icone
+            trayIcon.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    tray.remove(trayIcon);
+                    setVisible(true);
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao minimizar", "O sistema não suporta System Tray.", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -36,12 +102,16 @@ public class MainWin extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         btn_initServer = new javax.swing.JToggleButton();
-        jLabel3 = new javax.swing.JLabel();
+        version = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RESYTOR - Server Application");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
@@ -57,7 +127,7 @@ public class MainWin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("v0.0.1");
+        version.setText("v0.0.1");
 
         jLabel4.setText("DevIFES - M19");
 
@@ -66,20 +136,21 @@ public class MainWin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(44, 44, 44))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(44, 44, 44))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_initServer, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_initServer, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(version)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +161,7 @@ public class MainWin extends javax.swing.JFrame {
                 .addComponent(btn_initServer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(version)
                     .addComponent(jLabel4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -98,9 +169,19 @@ public class MainWin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        try {
+            tray.add(trayIcon);
+            setVisible(false);
+            System.out.println("Adicionado ao SystemTray");
+        } catch (AWTException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao minimizar", "O sistema não suporta System Tray.", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_formWindowClosing
+
     private void btn_initServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_initServerActionPerformed
-        TCPServer.startServer();
-      
+        // TODO add your handling code here:
     }//GEN-LAST:event_btn_initServerActionPerformed
 
     /**
@@ -129,7 +210,7 @@ public class MainWin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -149,6 +230,7 @@ public class MainWin extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 MainWin wm = new MainWin();
                 wm.setLocationRelativeTo(null);
@@ -162,11 +244,10 @@ public class MainWin extends javax.swing.JFrame {
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         this.setIconImage(imagemTitulo);
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn_initServer;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 }
