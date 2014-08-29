@@ -35,6 +35,7 @@ public class MainWin extends javax.swing.JFrame {
         btn_pesquisar = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btn_config = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resytor - Sistema de Recuperação Vetorial");
@@ -76,6 +77,15 @@ public class MainWin extends javax.swing.JFrame {
 
         jLabel3.setText("v0.0.1");
 
+        btn_config.setText("Configurar");
+        btn_config.setBorderPainted(false);
+        btn_config.setFocusPainted(false);
+        btn_config.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_configActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,14 +100,17 @@ public class MainWin extends javax.swing.JFrame {
                         .addComponent(btn_enviar_mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btn_ultimas_mensagens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn_ultimas_mensagens, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btn_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_config, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
                         .addComponent(jLabel2)))
                 .addContainerGap())
         );
@@ -112,6 +125,8 @@ public class MainWin extends javax.swing.JFrame {
                 .addComponent(btn_ultimas_mensagens, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_config, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -141,6 +156,14 @@ public class MainWin extends javax.swing.JFrame {
         win.setLocationRelativeTo(null);
         win.setVisible(true);
     }//GEN-LAST:event_btn_pesquisarActionPerformed
+
+    private void btn_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_configActionPerformed
+        
+        ConfigWin win = new ConfigWin(this, true);
+        win.setLocationRelativeTo(null);
+        win.setVisible(true);
+        
+    }//GEN-LAST:event_btn_configActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +204,7 @@ public class MainWin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btn_config;
     private javax.swing.JToggleButton btn_enviar_mensagem;
     private javax.swing.JToggleButton btn_pesquisar;
     private javax.swing.JToggleButton btn_ultimas_mensagens;
