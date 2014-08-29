@@ -2,6 +2,8 @@
 */**/manifest.mf
 */**/build.xml
 */**/nbproject
+*/**/nbbuild.xml
+*/**/nbbuild.xml
 nbproject/**/*
 server_app/nbproject
 server_app/build.xml
@@ -13,6 +15,7 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+
 
 
 ### Windows ###
