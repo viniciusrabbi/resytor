@@ -75,7 +75,7 @@ public class Dao {
             stmt.setString(1, String.valueOf(id));
             stmt.executeUpdate();
         } catch (SQLException erro) {
-            System.out.println("Erro na exclusão (" + erro.getLocalizedMessage() + ")");
+            System.out.println("Erro na exclusão  (" + erro.getLocalizedMessage() + ")");
         }
     }
 
