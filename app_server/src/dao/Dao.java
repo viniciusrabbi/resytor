@@ -161,7 +161,7 @@ public class Dao {
         ArrayList<String> arrayMessage = new ArrayList();
         Statement stmt = conexao.createStatement();
 
-        String sql = "SELECT conteudo FROM mensagem WHERE mensagem.conteudo LIKE" + " '%" + str + "%'";
+        String sql = "SELECT mensagem.conteudo FROM mensagem WHERE mensagem.conteudo LIKE" + " '%" + str + "%'";
 
         try {
             rs = stmt.executeQuery(sql);
