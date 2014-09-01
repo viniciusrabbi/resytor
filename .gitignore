@@ -1,3 +1,6 @@
+### Astah ###
+*.bak
+
 ### NetBeans ###
 */**/manifest.mf
 */**/build.xml
