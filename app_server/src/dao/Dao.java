@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Classe responsável pela persistência no banco, utilizando jdbc
@@ -40,9 +41,10 @@ public class Dao {
      * Método para a inserção da mensagem no banco
      *
      * @param text mensagem recebida
+     * @return retorna true ou false, condizente ao resultado da operação
      * @throws java.sql.SQLException
      */
-    public void insert(String text) throws SQLException {
+    public boolean insert(String text) throws SQLException {
         Connection conexao = Dao.Conectar();
 
         String sql = "INSERT INTO mensagem(conteudo)VALUES(?);";
@@ -52,8 +54,10 @@ public class Dao {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, text);
             stmt.executeUpdate();
+            return true;
         } catch (SQLException erro) {
             System.out.println("Erro na inserção (" + erro.getLocalizedMessage() + ")");
+            return false;
         }
     }
 
@@ -62,9 +66,10 @@ public class Dao {
      * Método para a exclusão da mensagem no banco
      *
      * @param id identificador da mensagem
+     * @return retorna true ou false, condizente ao resultado da operação
      * @throws java.sql.SQLException
      */
-    public void delete(int id) throws SQLException {
+    public boolean delete(int id) throws SQLException {
         Connection conexao = Dao.Conectar();
 
         String sql = "DELETE FROM mensagem WHERE mensagem.id = ?";
@@ -74,8 +79,10 @@ public class Dao {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, String.valueOf(id));
             stmt.executeUpdate();
+            return true;
         } catch (SQLException erro) {
-            System.out.println("Erro na exclusão (" + erro.getLocalizedMessage() + ")");
+            System.out.println("Erro na exclusão  (" + erro.getLocalizedMessage() + ")");
+            return false;
         }
     }
 
@@ -84,11 +91,13 @@ public class Dao {
      * Método para a pesquisa das mensagem no banco por identificador
      *
      * @param id identificador da mensagem
+     * @return 
      * @throws java.sql.SQLException
      */
-    public void search(int id) throws SQLException {
+    public String search(int id) throws SQLException {
         Connection conexao = Dao.Conectar();
         ResultSet rs;
+        String resultado = null;
         Statement stmt = conexao.createStatement();
 
         String sql = "SELECT conteudo FROM mensagem WHERE mensagem.id = " + String.valueOf(id);
@@ -96,7 +105,7 @@ public class Dao {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 try {
-                    System.out.println(rs.getString("conteudo"));
+                    resultado = (rs.getString("conteudo"));
                 } catch (SQLException erro) {
                     System.out.println("Erro na leitura de dados (" + erro.getLocalizedMessage() + ")");
                 }
@@ -104,25 +113,29 @@ public class Dao {
         } catch (SQLException erro) {
             System.out.println("Comando SQL inválido (" + erro.getLocalizedMessage() + ")");
         }
+        return resultado;
+        
     }
 
     /**
      *
      * Método para a pesquisa das ultimas dez mensagem no banco
      *
+     * @return retorna um arrayList de string
      * @throws java.sql.SQLException
      */
-    public void searchLastMessage() throws SQLException {
+    public ArrayList searchLastMessage() throws SQLException {
         Connection conexao = Dao.Conectar();
         ResultSet rs;
+        ArrayList<String> arrayMessage = new ArrayList();
         Statement stmt = conexao.createStatement();
 
-        String sql = "SELECT conteudo FROM mensagem LIMIT 10";
+        String sql = "SELECT mensagem.conteudo FROM mensagem ORDER BY mensagem.id DESC LIMIT 10";
         try {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 try {
-                    System.out.println(rs.getString("conteudo"));
+                    arrayMessage.add(rs.getString("conteudo"));
                 } catch (SQLException erro) {
                     System.out.println("Erro na leitura de dados (" + erro.getLocalizedMessage() + ")");
                 }
@@ -130,6 +143,7 @@ public class Dao {
         } catch (SQLException erro) {
             System.out.println("Comando SQL inválido (" + erro.getLocalizedMessage() + ")");
         }
+        return arrayMessage;
     }
 
     /**
@@ -138,20 +152,22 @@ public class Dao {
      * parâmetro
      *
      * @param str palavra pesquisada
+     * @return retorna um arrayList de string
      * @throws java.sql.SQLException
      */
-    public void searchForName(String str) throws SQLException {
+    public ArrayList searchForName(String str) throws SQLException {
         Connection conexao = Dao.Conectar();
         ResultSet rs;
+        ArrayList<String> arrayMessage = new ArrayList();
         Statement stmt = conexao.createStatement();
 
-        String sql = "SELECT conteudo FROM mensagem WHERE mensagem.conteudo LIKE" + " '%" + str + "%'";
+        String sql = "SELECT mensagem.conteudo FROM mensagem WHERE mensagem.conteudo LIKE" + " '%" + str + "%'";
 
         try {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 try {
-                    System.out.println(rs.getString("conteudo"));
+                    arrayMessage.add(rs.getString("conteudo"));
                 } catch (SQLException erro) {
                     System.out.println("Erro na leitura de dados (" + erro.getLocalizedMessage() + ")");
                 }
@@ -159,6 +175,7 @@ public class Dao {
         } catch (SQLException erro) {
             System.out.println("Comando SQL inválido (" + erro.getLocalizedMessage() + ")");
         }
+         return arrayMessage;
     }
 
     /**
@@ -167,9 +184,10 @@ public class Dao {
      *
      * @param text mensagem recebida
      * @param id identificador da mensagem
+     * @return retorna true ou false, condizente ao resultado da operação
      * @throws java.sql.SQLException
      */
-    public void update(String text, int id) throws SQLException {
+    public boolean update(String text, int id) throws SQLException {
         Connection conexao = Dao.Conectar();
 
         String sql = "UPDATE mensagem SET conteudo = ? WHERE mensagem.id = " + String.valueOf(id);
@@ -180,8 +198,10 @@ public class Dao {
             stmt.setString(1, text);
             //stmt.setString(id, sql);
             stmt.executeUpdate();
+            return true;
         } catch (SQLException erro) {
             System.out.println("Erro na atualização (" + erro.getLocalizedMessage() + ")");
+            return false;
         }
     }
 }
