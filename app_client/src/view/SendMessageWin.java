@@ -3,6 +3,7 @@ package view;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import tcp.TCPCliente;
 
 /**
  *
@@ -47,6 +48,11 @@ public class SendMessageWin extends javax.swing.JDialog {
         btn_enviar_mensagem.setRequestFocusEnabled(false);
         btn_enviar_mensagem.setRolloverEnabled(false);
         btn_enviar_mensagem.setVerifyInputWhenFocusTarget(false);
+        btn_enviar_mensagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_enviar_mensagemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,6 +79,11 @@ public class SendMessageWin extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_enviar_mensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviar_mensagemActionPerformed
+        // TODO add your handling code here:
+        TCPCliente tcpc = new TCPCliente(jTextArea1.getText());
+    }//GEN-LAST:event_btn_enviar_mensagemActionPerformed
 
     /**
      * @param args the command line arguments
