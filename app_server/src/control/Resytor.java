@@ -16,7 +16,12 @@ public class Resytor {
         this.dao = new Dao();
     }
     
-    //
+    /**
+     * Método para calcular freqüência de termo TFij
+     * 
+     * @param fij
+     * @return retorna um valor int
+     */
     public int calculaTFij(int fij)  throws TFijException{
         int tFij = 0;
 
