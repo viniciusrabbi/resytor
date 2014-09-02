@@ -11,6 +11,7 @@ import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.Timer;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -23,6 +24,7 @@ public class MainWin extends javax.swing.JFrame {
     private Core core;
     private TrayIcon trayIcon = null;
     private SystemTray tray = null;
+    private Timer timer = null;
 
     /**
      * Creates new form MainWin
@@ -182,6 +184,8 @@ public class MainWin extends javax.swing.JFrame {
 
     private void btn_initServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_initServerActionPerformed
         // TODO add your handling code here:
+        timer = new Timer();
+        timer.schedule(null, 0);
     }//GEN-LAST:event_btn_initServerActionPerformed
 
     /**
